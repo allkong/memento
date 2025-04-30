@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UseEffectBasic from './labs/experiments/useEffect/Basic';
-import Cleanup from './labs/experiments/useEffect/Cleanup';
-import EventListener from './labs/experiments/useEffect/EventListener';
-import DependencyMissing from './labs/experiments/useEffect/DependencyMissing';
+import UseEffectBasic from '@exp/useEffect/Basic';
+import Cleanup from '@exp/useEffect/Cleanup';
+import EventListener from '@exp/useEffect/EventListener';
+import DependencyMissing from '@exp/useEffect/DependencyMissing';
 
 const App = () => {
   return (
