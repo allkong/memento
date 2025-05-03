@@ -9,6 +9,7 @@ import AsyncEffect from '@exp/useEffect/AsyncEffect';
 import Compare from '@exp/useCallback/Compare';
 
 import ExpensiveCalc from '@exp/useMemo/ExpensiveCalc';
+import ParentWithMemo from '@exp/useMemo/ParentWithMemo';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/labs/use-callback/compare" element={<Compare />} />
 
         <Route path="/labs/use-memo/expensive" element={<ExpensiveCalc />} />
+        <Route path="/labs/use-memo/parent-memo" element={<ParentWithMemo />} />
       </Routes>
     </Router>
   );
