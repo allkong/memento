@@ -1,4 +1,5 @@
 import type { Todo } from '@/entities/todo/todo.type';
+import { Wrapper, Text } from '@/entities/todo/TodoItem.style';
 
 type Props = {
   todo: Todo;
@@ -6,10 +7,10 @@ type Props = {
 
 const TodoItem = ({ todo }: Props) => {
   return (
-    <div>
+    <Wrapper>
       <input type="checkbox" checked={todo.completed} readOnly />
-      <span>{todo.text}</span>
-    </div>
+      <Text completed={todo.completed}>{todo.text}</Text>
+    </Wrapper>
   );
 };
 
