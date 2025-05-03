@@ -16,6 +16,7 @@ import ListCompare from '@exp/virtualScroll/ListCompare';
 import Layout from '@exp/reactRouter/Layout';
 import Profile from '@exp/reactRouter/Profile';
 import Settings from '@exp/reactRouter/Settings';
+import UseEffectOnRouteChange from '@exp/reactRouter/UseEffectOnRouteChange';
 
 const App = () => {
   return (
@@ -39,6 +40,8 @@ const App = () => {
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
         </Route>
+
+        <Route path="/labs/router/effect" element={<UseEffectOnRouteChange />} />
       </Routes>
     </Router>
   );
