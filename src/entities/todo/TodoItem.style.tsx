@@ -11,4 +11,13 @@ export const Wrapper = styled.div`
 export const Text = styled.span<{ completed: boolean }>`
   text-decoration: ${({ completed }) => (completed ? 'line-through' : 'none')};
   color: ${({ completed }) => (completed ? '#888' : '#000')};
+  flex: 1;
+`;
+
+export const RemoveButton = styled.button`
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
 `;
