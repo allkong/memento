@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import TodoPage from '@/pages/TodoPage';
 import TodoTestPage from '@/pages/TodoTestPage';
 
 import UseEffectBasic from '@exp/useEffect/Basic';
@@ -32,6 +33,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<div>홈입니다</div>} />
+
+        <Route path="/todo" element={<TodoPage />} />
 
         <Route path="/labs/todo-test" element={<TodoTestPage />} />
 

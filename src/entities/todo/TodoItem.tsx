@@ -1,4 +1,4 @@
-import type { Todo } from '@/entities/todo/todo.type';
+import type { Todo } from '@/entities/todo/types';
 import { Wrapper, Text } from '@/entities/todo/TodoItem.style';
 
 type Props = {
