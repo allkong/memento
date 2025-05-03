@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 
 import type { Todo } from '@/entities/todo/types';
 import { useLocalStorage } from '@/shared/hooks/useLocalStorage';
@@ -29,7 +29,7 @@ type Props = {
 };
 
 export const TodoProvider = ({ children }: Props) => {
-  const [filter, setFilter] = useState<Filter>('all');
+  const [filter, setFilter] = useLocalStorage<Filter>('todoFilter', 'all');
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
 
   const addTodo = (text: string) => {
