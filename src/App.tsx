@@ -18,6 +18,8 @@ import Profile from '@exp/reactRouter/Profile';
 import Settings from '@exp/reactRouter/Settings';
 import UseEffectOnRouteChange from '@exp/reactRouter/UseEffectOnRouteChange';
 
+import CounterContainer from '@/labs/designPatterns/containerPresenter/CounterContainer';
+
 const App = () => {
   return (
     <Router>
@@ -42,6 +44,8 @@ const App = () => {
         </Route>
 
         <Route path="/labs/router/effect" element={<UseEffectOnRouteChange />} />
+
+        <Route path="/labs/patterns/container-presenter" element={<CounterContainer />} />
       </Routes>
     </Router>
   );

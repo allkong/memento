@@ -3,7 +3,8 @@
     "baseUrl": ".", // ✨ 추가
     "paths": {
       "@/*": ["src/*"],
-      "@exp/*": ["src/labs/experiments/*"]
+      "@exp/*": ["src/labs/experiments/*"],
+      "@pattern/*": ["src/labs/designPatterns/*"]
     },
 
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
