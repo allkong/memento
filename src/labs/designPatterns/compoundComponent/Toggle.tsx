@@ -3,9 +3,12 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 type ToggleContextType = {
   on: boolean; // 불 켜짐/꺼짐 상태
   toggle: () => void; // 상태를 바꾸는 함수
+  getToggleProps: (
+    props?: React.ButtonHTMLAttributes<HTMLButtonElement>,
+  ) => React.ButtonHTMLAttributes<HTMLButtonElement>;
 };
 // context 공간을 만듦
-const ToggleContext = createContext<ToggleContextType | null>(null);
+export const ToggleContext = createContext<ToggleContextType | null>(null);
 
 type ToggleProps = {
   children: ReactNode;
@@ -35,9 +38,20 @@ const Toggle = ({ children, on: controlledOn, onToggle, stateReducer }: TogglePr
     onToggle?.();
   };
 
+  const getToggleProps = (props: React.ButtonHTMLAttributes<HTMLButtonElement> = {}) => ({
+    ...props,
+    'aria-pressed': currentOn,
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+      props.onClick?.(e);
+      toggle();
+    },
+  });
+
   // 자식 컴포넌트들이 context 데이터에 접근 가능하도록 함
   return (
-    <ToggleContext.Provider value={{ on: currentOn, toggle }}>{children}</ToggleContext.Provider>
+    <ToggleContext.Provider value={{ on: currentOn, toggle, getToggleProps }}>
+      {children}
+    </ToggleContext.Provider>
   );
 };
 
