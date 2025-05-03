@@ -1,16 +1,33 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-// context 공간을 만듦
-const ToggleContext = createContext<{
+type ToggleContextType = {
   on: boolean; // 불 켜짐/꺼짐 상태
   toggle: () => void; // 상태를 바꾸는 함수
-} | null>(null);
+};
+// context 공간을 만듦
+const ToggleContext = createContext<ToggleContextType | null>(null);
+
+type ToggleProps = {
+  children: ReactNode;
+  on?: boolean; // 외부 상태 (control props)
+  onToggle?: () => void; // 외부 toggle 핸들러
+};
 
 // 부모 컴포넌트
 // 상태를 만들고 자식 컴포넌트에게 context로 전달
-const Toggle = ({ children }: { children: ReactNode }) => {
-  const [on, setOn] = useState(false); // 상태 생성
-  const toggle = () => setOn(o => !o); // 상태 변경 함수
+const Toggle = ({ children, on: controlledOn, onToggle }: ToggleProps) => {
+  const [uncontrolledOn, setUncontrolledOn] = useState(false);
+
+  const isControlled = controlledOn !== undefined;
+  const on = isControlled ? controlledOn : uncontrolledOn;
+
+  const toggle = () => {
+    if (isControlled) {
+      onToggle?.();
+    } else {
+      setUncontrolledOn(prev => !prev);
+    }
+  };
 
   // 자식 컴포넌트들이 context 데이터에 접근 가능하도록 함
   return <ToggleContext.Provider value={{ on, toggle }}>{children}</ToggleContext.Provider>;
