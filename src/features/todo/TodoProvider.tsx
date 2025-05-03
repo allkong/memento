@@ -2,8 +2,12 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 
 import type { Todo } from '@/entities/todo/types';
 
+type Filter = 'all' | 'active' | 'completed'; // 필터 타입
+
 type TodoContextType = {
   todos: Todo[];
+  filter: Filter;
+  setFilter: (filter: Filter) => void;
   addTodo: (text: string) => void;
   toggleTodo: (id: string) => void;
   removeTodo: (id: string) => void;
@@ -24,6 +28,7 @@ type Props = {
 };
 
 export const TodoProvider = ({ children }: Props) => {
+  const [filter, setFilter] = useState<Filter>('all');
   const [todos, setTodos] = useState<Todo[]>([
     { id: '1', text: '첫 번째 할 일', completed: false },
     { id: '2', text: '두 번째 할 일', completed: true },
@@ -49,7 +54,7 @@ export const TodoProvider = ({ children }: Props) => {
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, removeTodo }}>
+    <TodoContext.Provider value={{ todos, filter, setFilter, addTodo, toggleTodo, removeTodo }}>
       {children}
     </TodoContext.Provider>
   );
