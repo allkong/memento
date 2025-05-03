@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 import type { Todo } from '@/entities/todo/types';
+import { useLocalStorage } from '@/shared/hooks/useLocalStorage';
 
 type Filter = 'all' | 'active' | 'completed'; // 필터 타입
 
@@ -29,10 +30,7 @@ type Props = {
 
 export const TodoProvider = ({ children }: Props) => {
   const [filter, setFilter] = useState<Filter>('all');
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: '1', text: '첫 번째 할 일', completed: false },
-    { id: '2', text: '두 번째 할 일', completed: true },
-  ]);
+  const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {
