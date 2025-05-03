@@ -21,6 +21,7 @@ import UseEffectOnRouteChange from '@exp/reactRouter/UseEffectOnRouteChange';
 import CounterContainer from '@pattern/containerPresenter/CounterContainer';
 import CompoundExample from '@pattern/compoundComponent/CompoundExample';
 import ControlledExample from '@pattern/compoundComponent/ControlledExample';
+import StateReducerExample from '@pattern/compoundComponent/StateReducerExample';
 
 const App = () => {
   return (
@@ -49,10 +50,8 @@ const App = () => {
 
         <Route path="/labs/patterns/container-presenter" element={<CounterContainer />} />
         <Route path="/labs/patterns/compound-component" element={<CompoundExample />} />
-        <Route
-          path="/labs/patterns/compound-component-controlled"
-          element={<ControlledExample />}
-        />
+        <Route path="/labs/patterns/control-props" element={<ControlledExample />} />
+        <Route path="/labs/patterns/state-reducer" element={<StateReducerExample />} />
       </Routes>
     </Router>
   );

@@ -11,26 +11,34 @@ type ToggleProps = {
   children: ReactNode;
   on?: boolean; // 외부 상태 (control props)
   onToggle?: () => void; // 외부 toggle 핸들러
+  stateReducer?: (state: boolean, changes: { type: string }) => boolean; // 상태 변경을 커스터마이징하는 함수
 };
 
 // 부모 컴포넌트
 // 상태를 만들고 자식 컴포넌트에게 context로 전달
-const Toggle = ({ children, on: controlledOn, onToggle }: ToggleProps) => {
+const Toggle = ({ children, on: controlledOn, onToggle, stateReducer }: ToggleProps) => {
   const [uncontrolledOn, setUncontrolledOn] = useState(false);
 
-  const isControlled = controlledOn !== undefined;
-  const on = isControlled ? controlledOn : uncontrolledOn;
+  const isControlled = controlledOn !== undefined; // 컨트롤 방식 결정
+  const currentOn = isControlled ? controlledOn : uncontrolledOn;
 
   const toggle = () => {
-    if (isControlled) {
-      onToggle?.();
-    } else {
-      setUncontrolledOn(prev => !prev);
+    let newState = !currentOn;
+    if (stateReducer) {
+      newState = stateReducer(currentOn, { type: 'toggle' });
     }
+
+    if (!isControlled) {
+      setUncontrolledOn(newState);
+    }
+
+    onToggle?.();
   };
 
   // 자식 컴포넌트들이 context 데이터에 접근 가능하도록 함
-  return <ToggleContext.Provider value={{ on, toggle }}>{children}</ToggleContext.Provider>;
+  return (
+    <ToggleContext.Provider value={{ on: currentOn, toggle }}>{children}</ToggleContext.Provider>
+  );
 };
 
 // 자식 컴포넌트: On
