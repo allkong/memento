@@ -23,6 +23,7 @@ import CompoundExample from '@pattern/compoundComponent/CompoundExample';
 import ControlledExample from '@pattern/compoundComponent/ControlledExample';
 import StateReducerExample from '@pattern/compoundComponent/StateReducerExample';
 import PropsGettersExample from '@pattern/compoundComponent/PropsGettersExample';
+import CustomHookExample from '@pattern/customHookCompound/CustomHookExample';
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/labs/patterns/control-props" element={<ControlledExample />} />
         <Route path="/labs/patterns/state-reducer" element={<StateReducerExample />} />
         <Route path="/labs/patterns/props-getters" element={<PropsGettersExample />} />
+        <Route path="/labs/patterns/custom-hook-compound" element={<CustomHookExample />} />
       </Routes>
     </Router>
   );
