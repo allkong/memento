@@ -12,4 +12,9 @@ export const Button = styled.button<{ active: boolean }>`
   &:hover {
     background-color: #f0f0f0;
   }
+
+  @media (max-width: 600px) {
+    margin-right: 4px;
+    padding: 4px 6px;
+  }
 `;

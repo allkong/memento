@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { useTodos } from './TodoProvider';
+
+import { Form, Input, Button } from '@/features/todo/TodoAddForm.style';
+import { useTodos } from '@/features/todo/TodoProvider';
 
 const TodoAddForm = () => {
   const [input, setInput] = useState('');
@@ -13,14 +15,14 @@ const TodoAddForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Form onSubmit={handleSubmit}>
+      <Input
         value={input}
         onChange={e => setInput(e.target.value)}
         placeholder="할 일을 입력하세요"
       />
-      <button type="submit">추가</button>
-    </form>
+      <Button type="submit">추가</Button>
+    </Form>
   );
 };
 
