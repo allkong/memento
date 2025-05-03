@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { ThemeProvider } from '@emotion/react';
 import GlobalStyle from '@/shared/styles/GlobalStyle';
-import { theme } from '@/shared/styles/theme';
+import { lightTheme, darkTheme } from '@/shared/styles/theme';
 
 import TodoPage from '@/pages/TodoPage';
 import TodoTestPage from '@/pages/TodoTestPage';
@@ -33,9 +34,23 @@ import PropsGettersExample from '@pattern/compoundComponent/PropsGettersExample'
 import CustomHookExample from '@pattern/customHookCompound/CustomHookExample';
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
+      <button
+        onClick={() => setDarkMode(prev => !prev)}
+        style={{
+          position: 'fixed',
+          top: 10,
+          right: 10,
+          zIndex: 1000,
+          padding: '6px 12px',
+        }}
+      >
+        {darkMode ? '☀️ 라이트 모드' : '🌙 다크 모드'}
+      </button>
       <Router>
         <Routes>
           <Route path="/" element={<div>홈입니다</div>} />

@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 
 export const Text = styled.span<{ completed: boolean }>`
   text-decoration: ${({ completed }) => (completed ? 'line-through' : 'none')};
-  color: ${({ completed }) => (completed ? '#888' : '#000')};
+  color: ${({ theme, completed }) => (completed ? theme.colors.danger : theme.colors.text)};
   flex: 1;
   word-break: break-word;
 `;

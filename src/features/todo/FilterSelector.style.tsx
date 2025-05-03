@@ -8,9 +8,10 @@ export const Button = styled.button<{ active: boolean }>`
   border-radius: 4px;
   padding: 4px 8px;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.text};
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${({ theme }) => theme.colors.hover};
   }
 
   @media (max-width: 600px) {
