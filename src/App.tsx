@@ -11,6 +11,8 @@ import Compare from '@exp/useCallback/Compare';
 import ExpensiveCalc from '@exp/useMemo/ExpensiveCalc';
 import ParentWithMemo from '@exp/useMemo/ParentWithMemo';
 
+import ListCompare from '@exp/virtualScroll/ListCompare';
+
 const App = () => {
   return (
     <Router>
@@ -26,6 +28,8 @@ const App = () => {
 
         <Route path="/labs/use-memo/expensive" element={<ExpensiveCalc />} />
         <Route path="/labs/use-memo/parent-memo" element={<ParentWithMemo />} />
+
+        <Route path="/labs/virtual-scroll/list-compare" element={<ListCompare />} />
       </Routes>
     </Router>
   );
