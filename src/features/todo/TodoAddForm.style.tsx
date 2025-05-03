@@ -20,7 +20,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   padding: 8px 12px;
   border: none;
-  background-color: #007bff;
+  background-color: ${({ theme }) => theme.colors.primary};
   color: white;
   border-radius: 4px;
 

@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { ThemeProvider } from '@emotion/react';
+import GlobalStyle from '@/shared/styles/GlobalStyle';
+import { theme } from '@/shared/styles/theme';
+
 import TodoPage from '@/pages/TodoPage';
 import TodoTestPage from '@/pages/TodoTestPage';
 
@@ -30,42 +34,45 @@ import CustomHookExample from '@pattern/customHookCompound/CustomHookExample';
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<div>홈입니다</div>} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Router>
+        <Routes>
+          <Route path="/" element={<div>홈입니다</div>} />
 
-        <Route path="/todo" element={<TodoPage />} />
+          <Route path="/todo" element={<TodoPage />} />
 
-        <Route path="/labs/todo-test" element={<TodoTestPage />} />
+          <Route path="/labs/todo-test" element={<TodoTestPage />} />
 
-        <Route path="/labs/use-effect/basic" element={<UseEffectBasic />} />
-        <Route path="/labs/use-effect/cleanup" element={<Cleanup />} />
-        <Route path="/labs/use-effect/event-listener" element={<EventListener />} />
-        <Route path="/labs/use-effect/dependency-missing" element={<DependencyMissing />} />
-        <Route path="/labs/use-effect/async" element={<AsyncEffect />} />
+          <Route path="/labs/use-effect/basic" element={<UseEffectBasic />} />
+          <Route path="/labs/use-effect/cleanup" element={<Cleanup />} />
+          <Route path="/labs/use-effect/event-listener" element={<EventListener />} />
+          <Route path="/labs/use-effect/dependency-missing" element={<DependencyMissing />} />
+          <Route path="/labs/use-effect/async" element={<AsyncEffect />} />
 
-        <Route path="/labs/use-callback/compare" element={<Compare />} />
+          <Route path="/labs/use-callback/compare" element={<Compare />} />
 
-        <Route path="/labs/use-memo/expensive" element={<ExpensiveCalc />} />
-        <Route path="/labs/use-memo/parent-memo" element={<ParentWithMemo />} />
+          <Route path="/labs/use-memo/expensive" element={<ExpensiveCalc />} />
+          <Route path="/labs/use-memo/parent-memo" element={<ParentWithMemo />} />
 
-        <Route path="/labs/virtual-scroll/list-compare" element={<ListCompare />} />
+          <Route path="/labs/virtual-scroll/list-compare" element={<ListCompare />} />
 
-        <Route path="/labs/router" element={<Layout />}>
-          <Route path="profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
+          <Route path="/labs/router" element={<Layout />}>
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
 
-        <Route path="/labs/router/effect" element={<UseEffectOnRouteChange />} />
+          <Route path="/labs/router/effect" element={<UseEffectOnRouteChange />} />
 
-        <Route path="/labs/patterns/container-presenter" element={<CounterContainer />} />
-        <Route path="/labs/patterns/compound-component" element={<CompoundExample />} />
-        <Route path="/labs/patterns/control-props" element={<ControlledExample />} />
-        <Route path="/labs/patterns/state-reducer" element={<StateReducerExample />} />
-        <Route path="/labs/patterns/props-getters" element={<PropsGettersExample />} />
-        <Route path="/labs/patterns/custom-hook-compound" element={<CustomHookExample />} />
-      </Routes>
-    </Router>
+          <Route path="/labs/patterns/container-presenter" element={<CounterContainer />} />
+          <Route path="/labs/patterns/compound-component" element={<CompoundExample />} />
+          <Route path="/labs/patterns/control-props" element={<ControlledExample />} />
+          <Route path="/labs/patterns/state-reducer" element={<StateReducerExample />} />
+          <Route path="/labs/patterns/props-getters" element={<PropsGettersExample />} />
+          <Route path="/labs/patterns/custom-hook-compound" element={<CustomHookExample />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 };
 
