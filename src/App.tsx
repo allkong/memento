@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import GlobalStyle from '@/shared/styles/GlobalStyle';
 import { lightTheme, darkTheme } from '@/shared/styles/theme';
+import { useLocalStorage } from '@/shared/hooks/useLocalStorage';
 
 import TodoPage from '@/pages/TodoPage';
 import TodoTestPage from '@/pages/TodoTestPage';
@@ -34,7 +35,7 @@ import PropsGettersExample from '@pattern/compoundComponent/PropsGettersExample'
 import CustomHookExample from '@pattern/customHookCompound/CustomHookExample';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', false);
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
