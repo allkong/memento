@@ -13,6 +13,10 @@ import ParentWithMemo from '@exp/useMemo/ParentWithMemo';
 
 import ListCompare from '@exp/virtualScroll/ListCompare';
 
+import Layout from '@exp/reactRouter/Layout';
+import Profile from '@exp/reactRouter/Profile';
+import Settings from '@exp/reactRouter/Settings';
+
 const App = () => {
   return (
     <Router>
@@ -30,6 +34,11 @@ const App = () => {
         <Route path="/labs/use-memo/parent-memo" element={<ParentWithMemo />} />
 
         <Route path="/labs/virtual-scroll/list-compare" element={<ListCompare />} />
+
+        <Route path="/labs/router" element={<Layout />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
     </Router>
   );
