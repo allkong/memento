@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import TodoTestPage from '@/pages/TodoTestPage';
+
 import UseEffectBasic from '@exp/useEffect/Basic';
 import Cleanup from '@exp/useEffect/Cleanup';
 import EventListener from '@exp/useEffect/EventListener';
@@ -30,6 +32,9 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<div>홈입니다</div>} />
+
+        <Route path="/labs/todo-test" element={<TodoTestPage />} />
+
         <Route path="/labs/use-effect/basic" element={<UseEffectBasic />} />
         <Route path="/labs/use-effect/cleanup" element={<Cleanup />} />
         <Route path="/labs/use-effect/event-listener" element={<EventListener />} />
