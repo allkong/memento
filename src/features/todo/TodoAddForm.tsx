@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 import { Form, Input, Button } from '@/features/todo/TodoAddForm.style';
-import { useTodos } from '@/features/todo/TodoProvider';
+import { useTodoActions } from '@/features/todo/TodoProvider';
 
 const TodoAddForm = () => {
   const [input, setInput] = useState('');
-  const { addTodo } = useTodos();
+  const { addTodo } = useTodoActions();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

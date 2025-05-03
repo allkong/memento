@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Todo } from '@/entities/todo/types';
 import { Wrapper, Text, RemoveButton } from '@/entities/todo/TodoItem.style';
-import { useTodos } from '@/features/todo/TodoProvider';
+import { useTodoActions } from '@/features/todo/TodoProvider';
 
 import ConfirmModal from '@/shared/ui/ConfirmModal';
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const TodoItem = ({ todo }: Props) => {
-  const { toggleTodo, removeTodo } = useTodos();
+  const { toggleTodo, removeTodo } = useTodoActions();
   const [showConfirm, setShowConfirm] = useState(false);
 
   return (

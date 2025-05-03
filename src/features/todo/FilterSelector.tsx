@@ -1,8 +1,9 @@
-import { useTodos } from '@/features/todo/TodoProvider';
 import { Button } from '@/features/todo/FilterSelector.style';
+import { useTodos, useTodoActions } from '@/features/todo/TodoProvider';
 
 const FilterSelector = () => {
-  const { filter, setFilter } = useTodos();
+  const { filter } = useTodos();
+  const { setFilter } = useTodoActions();
 
   return (
     <div style={{ marginBottom: 16 }}>
